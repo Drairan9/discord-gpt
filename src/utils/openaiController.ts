@@ -17,12 +17,15 @@ export default class openaiController {
 
     public async createPrompt(message: string): Promise<string> {
         if (message.trim() === '') return config.error_response;
-
+        const usernameFromConfig = config.username_mapping.find(
+            (name) => name.username.toLocaleLowerCase() === this.creatorUsername
+        );
+        const realName = usernameFromConfig ? usernameFromConfig.real_name : this.creatorUsername;
         const chatCompletion: AxiosResponse<CreateChatCompletionResponse, any> = await this.openai.createChatCompletion(
             {
                 model: config.model,
                 messages: [
-                    { role: 'system', content: `User asking the question is named ${this.creatorUsername}.` },
+                    { role: 'system', content: `User asking the question is named ${realName}.` },
                     {
                         role: 'system',
                         content: config.system_prompt,

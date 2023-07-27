@@ -12,7 +12,6 @@ export default new Event('messageCreate', async (message) => {
 
     message.channel.sendTyping();
     if (filteredMessage.trim() === '') return message.reply(config.no_content_response);
-    console.log(filteredMessage);
 
     const response: string = await new openaiController(message.author.username).createPrompt(filteredMessage);
     message.reply(response);

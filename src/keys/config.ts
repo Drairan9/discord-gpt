@@ -1,6 +1,6 @@
 import config from '../config.json';
 
-const configOptions = ['model', 'system_prompt', 'no_content_response', 'error_response'];
+const configOptions = ['model', 'system_prompt', 'no_content_response', 'error_response', 'username_mapping'];
 
 configOptions.forEach((property) => {
     if (!config.hasOwnProperty(property)) {

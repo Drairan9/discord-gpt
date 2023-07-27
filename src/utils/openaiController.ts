@@ -22,11 +22,11 @@ export default class openaiController {
             {
                 model: config.model,
                 messages: [
+                    { role: 'system', content: `User asking the question is named ${this.creatorUsername}.` },
                     {
                         role: 'system',
                         content: config.system_prompt,
                     },
-                    { role: 'system', content: `This message is sent by ${this.creatorUsername}` },
                     { role: 'user', content: message },
                 ],
             }

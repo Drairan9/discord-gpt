@@ -15,8 +15,8 @@ export default class openaiController {
         this.creatorUsername = creatorUsername;
     }
 
-    public async createPrompt(message: string) {
-        if (message.trim() === '') return;
+    public async createPrompt(message: string): Promise<string> {
+        if (message.trim() === '') return config.error_response;
 
         const chatCompletion: AxiosResponse<CreateChatCompletionResponse, any> = await this.openai.createChatCompletion(
             {
@@ -32,5 +32,7 @@ export default class openaiController {
             }
         );
         const response: string | undefined = chatCompletion.data.choices[0].message?.content;
+        if (response === undefined) return config.error_response;
+        return response;
     }
 }

@@ -1,6 +1,6 @@
 import config from '../config.json';
 
-const configOptions = ['model', 'system_prompt', 'no_content_response'];
+const configOptions = ['model', 'system_prompt', 'no_content_response', 'error_response'];
 
 configOptions.forEach((property) => {
     if (!config.hasOwnProperty(property)) {

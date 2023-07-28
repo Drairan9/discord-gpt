@@ -1,6 +1,6 @@
 {
     "model": "", // openai model - https://platform.openai.com/docs/models/models
-    "system_prompt": "",
+    "system_prompt": "", // https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api
     "no_content_response": "", // Reply message if bot is mentioned without content
     "error_response": "", // Error message
     "username_mapping": [

@@ -1,0 +1,11 @@
+{
+    "model": "", // openai model - https://platform.openai.com/docs/models/models
+    "system_prompt": "",
+    "no_content_response": "", // Reply message if bot is mentioned without content
+    "error_response": "", // Error message
+    "username_mapping": [
+        { "username": "user1", "real_name": "John" }, // Discord username NOT DISPLAYNAME
+        { "username": "user2", "real_name": "Sarah" },
+        { "username": "user3", "real_name": "Michael" }
+    ]
+}

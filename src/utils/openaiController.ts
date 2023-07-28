@@ -26,11 +26,11 @@ export default class openaiController {
                 model: config.model,
                 messages: [
                     ...lastMessages,
-                    { role: 'system', content: `My name is ${realName}.` },
                     {
                         role: 'system',
                         content: config.system_prompt,
                     },
+                    { role: 'system', content: `User first name is ${realName}.` },
                     { role: 'user', content: message },
                 ],
             }

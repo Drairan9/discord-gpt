@@ -1,4 +1,4 @@
-import { Configuration, CreateChatCompletionResponse, OpenAIApi } from 'openai';
+import { ChatCompletionRequestMessage, Configuration, CreateChatCompletionResponse, OpenAIApi } from 'openai';
 import keys from '../keys';
 import config from '../keys/config';
 import { AxiosResponse } from 'axios';
@@ -15,7 +15,7 @@ export default class openaiController {
         this.creatorUsername = creatorUsername;
     }
 
-    public async createPrompt(message: string): Promise<string> {
+    public async createPrompt(message: string, lastMessages: ChatCompletionRequestMessage[]): Promise<string> {
         if (message.trim() === '') return config.error_response;
         const usernameFromConfig = config.username_mapping.find(
             (name) => name.username.toLocaleLowerCase() === this.creatorUsername
@@ -25,7 +25,8 @@ export default class openaiController {
             {
                 model: config.model,
                 messages: [
-                    { role: 'system', content: `User asking the question is named ${realName}.` },
+                    ...lastMessages,
+                    { role: 'system', content: `My name is ${realName}.` },
                     {
                         role: 'system',
                         content: config.system_prompt,
